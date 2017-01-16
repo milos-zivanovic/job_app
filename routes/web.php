@@ -16,6 +16,7 @@ Auth::routes();
 Route::group(['middleware' => 'auth'], function() {
 
     //Default route
+    Route::get('/', 'JobController@index');
     Route::get('/home', 'JobController@index');
     
     

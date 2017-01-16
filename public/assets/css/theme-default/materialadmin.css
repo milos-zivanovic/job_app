@@ -1333,7 +1333,7 @@ a.text-success:hover {
 .header-nav-profile .dropdown .profile-info {
   display: inline-block;
   vertical-align: middle;
-  padding: 0 20px 0 10px;
+  padding: 15px 0 0 15px;
   line-height: 15px;
 }
 .header-nav-profile .dropdown .profile-info small {

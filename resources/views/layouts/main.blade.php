@@ -39,13 +39,6 @@
             <div class="headerbar">
                 <div class="headerbar-left">
                     <ul class="header-nav header-nav-options">
-                        <li class="header-nav-brand">
-                            <div class="brand-holder">
-                                <a href="home">
-                                    <span class="text-lg text-bold text-primary">MATERIAL ADMIN</span>
-                                </a>
-                            </div>
-                        </li>
                         <li>
                             <a class="btn btn-icon-toggle menubar-toggle" data-toggle="menubar" href="javascript:void(0);">
                                 <i class="fa fa-bars"></i>
@@ -57,8 +50,7 @@
                     <ul class="header-nav header-nav-profile">
                         <li class="dropdown">
                             <a href="javascript:void(0);" class="dropdown-toggle ink-reaction" data-toggle="dropdown">
-                                <img src="assets/img/avatar1.jpg?1403934956" alt=""/>
-                                <span class="profile-info">{{ Auth::user()->first_name }} {{ Auth::user()->last_name }}</span>
+                                <span class="profile-info">{{ Auth::user()->name }}</span>
                             </a>
                             <ul class="dropdown-menu animation-dock">
                                 <li>
@@ -83,70 +75,14 @@
             </div>
             
             <div id="menubar" class="menubar-inverse ">
-                <div class="menubar-fixed-panel">
-                    <div>
-                        <a class="btn btn-icon-toggle btn-default menubar-toggle" data-toggle="menubar"
-                           href="javascript:void(0);">
-                            <i class="fa fa-bars"></i>
-                        </a>
-                    </div>
-                    <div class="expanded">
-                        <a href="dashboard">
-                            <span class="text-lg text-bold text-primary ">MATERIAL&nbsp;ADMIN</span>
-                        </a>
-                    </div>
-                </div>
                 <div class="menubar-scroll-panel">
                     <ul id="main-menu" class="gui-controls">
-                        <li <?= ($activeTab == 'home') ? 'class="active"' : ''; ?>>
-                            <a href="home">
+                        <li class="active">
+                            <a href="/home">
                                 <div class="gui-icon"><i class="md md-home"></i></div>
-                                <span class="title">Dashboard</span>
+                                <span class="title">Job Posts</span>
                             </a>
                         </li>
-                        <?php if(App\Permission::checkAccess('', Auth::user()->id, 'Users@read')) : ?>
-                            <li <?= ($activeTab == 'users') ? 'class="active"' : ''; ?>>
-                                <a href="usersRead">
-                                    <div class="gui-icon"><i class="fa fa-users"></i></div>
-                                    <span class="title">Users</span>
-                                </a>
-                            </li>
-                        <?php endif; ?>
-                            
-                        <?php if(App\Permission::checkAccess('', Auth::user()->id, 'Articles@read') || App\Permission::checkAccess('', Auth::user()->id, 'Articles@readNonconfirmed')) : ?>
-                        <li class="gui-folder <?= ($activeTab == 'articles') ? 'active' : ''; ?>">
-                            <a href="#">
-                                <div class="gui-icon"><i class="fa fa-list"></i></div>
-                                <span class="title">Articles</span>
-                            </a>
-                            <ul>
-                                <?php if(App\Permission::checkAccess('', Auth::user()->id, 'Articles@read')) : ?>
-                                    <li><a href="articlesRead" ><span class="title">Confirmed</span></a></li>
-                                <?php endif; ?>
-                                <?php if(App\Permission::checkAccess('', Auth::user()->id, 'Articles@readNonconfirmed')) : ?>
-                                    <li><a href="articlesReadNonconfirmed" ><span class="title">Non-confirmed</span></a></li>
-                                <?php endif; ?>
-                            </ul>
-                        </li>
-                        <?php endif; ?>
-                        
-                        
-                        <?php if(App\Permission::checkAccess('', Auth::user()->id, 'Categories@read')) : ?>
-                            <li <?= ($activeTab == 'categories') ? 'class="active"' : ''; ?>>
-                                <a href="categoriesRead">
-                                    <div class="gui-icon"><i class="fa fa-table"></i></div>
-                                    <span class="title">Categories</span>
-                                </a>
-                            </li>
-                        <?php endif; ?>
-                        <?php if(App\Permission::checkAccess('', Auth::user()->id, 'Administration@index')) : ?>
-                            <li <?= ($activeTab == 'administration') ? 'class="active"' : ''; ?>>
-                                <a href="adminIndex">
-                                    <div class="gui-icon"><i class="fa fa-users"></i></div>
-                                    <span class="title">Administration</span>
-                                </a>
-                            </li>
-                        <?php endif; ?>
                     </ul>
                 </div>
             </div>
